@@ -22,23 +22,28 @@ export const profile = {
   experience: [
     {
       company: "BusinessNext (Acidaes Solutions Pvt. Ltd.)",
-      title: "AI Engineer",
-      period: "Jun 2025 – Present",
-      bullets: [
-        "Designed and deployed a production-grade LLM agent for CRM email automation using LangChain, improving support response efficiency by 35%.",
-        "Built a centralized LLM evaluation dashboard using DeepEval to monitor hallucination, latency, safety, and adherence across 5 production models.",
-        "Integrated Guardrails-AI into LangChain microservices to enforce action constraints and output validation, reducing incorrect executions by 40%.",
-        "Fine-tuned LLaMA and Mistral models for reliable structured JSON tool calling across enterprise services.",
-      ],
-    },
-    {
-      company: "BusinessNext (Acidaes Solutions Pvt. Ltd.)",
-      title: "Junior AI Engineer",
-      period: "Jan 2025 – Jun 2025",
-      bullets: [
-        "Built a Scrum Master AI agent to automate sprint ceremonies, backlog analysis, and cross-team coordination.",
-        "Automated summarization and analysis of 50+ Azure Board tickets per sprint, generating blocker reports for leadership.",
-        "Built a QA Automation AI agent to generate 200+ test cases from PR diffs and trigger CI workflows.",
+      title: "BusinessNext",
+      period: "Jan 2025 – Present",
+      roles: [
+        {
+          title: "AI Engineer",
+          period: "Jun 2025 – Present",
+          bullets: [
+            "Designed and deployed a production-grade LLM agent for CRM email automation using LangChain (+35% support response efficiency).",
+            "Built a centralized DeepEval dashboard tracking hallucination, latency, safety, and adherence across 5 production models.",
+            "Integrated Guardrails-AI to enforce action constraints + output validation (-40% incorrect executions).",
+            "Fine-tuned LLaMA and Mistral for reliable structured JSON tool calling.",
+          ],
+        },
+        {
+          title: "Junior AI Engineer",
+          period: "Jan 2025 – Jun 2025",
+          bullets: [
+            "Built a Scrum Master AI agent to automate sprint ceremonies, backlog analysis, and cross-team coordination.",
+            "Automated summarization of 50+ Azure Board tickets per sprint for blocker/insight reports.",
+            "Built a QA Automation AI agent generating 200+ test cases from PR diffs and triggering CI workflows.",
+          ],
+        },
       ],
     },
   ],

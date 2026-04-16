@@ -13,6 +13,8 @@ import ImpactChart from "./components/ImpactChart";
 import TransformerMini from "./components/TransformerMini";
 import FlowSection from "./components/FlowSection";
 import { isPlaceholderUrl, safeExternalHref } from "./lib/links";
+import SkillsBarChart from "./components/SkillsBarChart";
+import TransformerFlow from "./components/TransformerFlow";
 
 function Pill({ children }: { children: React.ReactNode }) {
   return <span className="pill">{children}</span>;
@@ -44,8 +46,8 @@ function Stat({ k, v }: { k: string; v: string }) {
 export default function App() {
   useMouseGlow();
   useTilt(".card");
-  const [playMode, setPlayMode] = useState(true);
-  const [sfxOn, setSfxOn] = useState(true);
+  const [playMode] = useState(true);
+  const [sfxOn] = useState(true);
   const { play } = useSfx(playMode && sfxOn);
 
   useEffect(() => {
@@ -58,10 +60,6 @@ export default function App() {
     return () => document.removeEventListener("pointerenter", handler, true);
   }, [play]);
   const openResume = () => window.open(profile.links.resume, "_blank", "noopener,noreferrer");
-  const openLinkedIn = () => {
-    const href = safeExternalHref(profile.links.linkedin);
-    if (href !== "#") window.open(href, "_blank", "noopener,noreferrer");
-  };
 
   return (
     <>
@@ -86,39 +84,7 @@ export default function App() {
               <a href="#contact">Contact</a>
             </nav>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <button
-                type="button"
-                className={`toggle ${playMode ? "on" : ""}`}
-                onClick={() => setPlayMode((v) => !v)}
-                aria-pressed={playMode}
-                title="Toggle Play Mode"
-              >
-                <span className="dot" /> Play
-              </button>
-              <button
-                type="button"
-                className={`toggle ${sfxOn ? "on" : ""}`}
-                onClick={() => setSfxOn((v) => !v)}
-                aria-pressed={sfxOn}
-                title="Toggle SFX"
-                disabled={!playMode}
-              >
-                <span className="dot" /> SFX
-              </button>
-              <button
-                className="btn secondary"
-                onClick={openLinkedIn}
-                type="button"
-                disabled={isPlaceholderUrl(profile.links.linkedin)}
-                title={isPlaceholderUrl(profile.links.linkedin) ? "Add your LinkedIn URL in profile.ts" : "Open LinkedIn"}
-              >
-                <Link size={16} /> LinkedIn <ArrowUpRight size={16} />
-              </button>
-              <button className="btn" onClick={openResume} type="button">
-                <Download size={16} /> Resume <ArrowUpRight size={16} />
-              </button>
-            </div>
+            <div />
           </div>
         </div>
       </header>
@@ -212,38 +178,8 @@ export default function App() {
           <div className="container">
             <div className="dashRail">
               <FlowSection
-                title="System Overview"
-                subtitle="An agentic CRM automation stack, with routing, tools, guardrails, evaluation, and telemetry."
-              >
-                <div className="showcaseGrid">
-                  <div className="showcaseA">
-                    <AgenticWorkflow />
-                  </div>
-                  <div className="showcaseB">
-                    <ImpactChart />
-                  </div>
-                  <div className="showcaseC">
-                    <TransformerMini />
-                  </div>
-                </div>
-              </FlowSection>
-
-              <FlowSection
-                title="Impact"
-                subtitle="Production outcomes, monitoring, and scale."
-              >
-                <div className="statsRow">
-                  <Stat k="Support efficiency" v="+35%" />
-                  <Stat k="Incorrect executions" v="-40%" />
-                  <Stat k="Models monitored" v="5" />
-                  <Stat k="Agent instances" v="10+" />
-                  <Stat k="Multi-agent workflows" v="8" />
-                </div>
-              </FlowSection>
-
-              <FlowSection
                 title="Experience"
-                subtitle="Work mapped as capability nodes instead of long paragraphs."
+                subtitle="Hierarchy: experience → what I built → measured impact → system design."
               >
                 <div className="timeline">
                   {profile.experience.map((e) => (
@@ -251,17 +187,60 @@ export default function App() {
                       <div className="itemTop">
                         <div className="left">
                           <span className="company">{e.company}</span>
-                          <span className="role">{e.title}</span>
+                          <span className="role">{e.period}</span>
                         </div>
-                        <span className="period">{e.period}</span>
+                        <span className="period">{profile.role}</span>
                       </div>
-                      <div className="pills" style={{ marginTop: 10 }}>
-                        {e.bullets.slice(0, 6).map((b) => (
-                          <Pill key={b}>{b.replace(/\.$/, "")}</Pill>
-                        ))}
-                      </div>
+
+                      {("roles" in e ? (e as any).roles : []).map((r: any) => (
+                        <div key={r.title} style={{ marginTop: 12 }}>
+                          <div className="itemTop">
+                            <div className="left">
+                              <span className="company">{r.title}</span>
+                              <span className="role">{r.period}</span>
+                            </div>
+                          </div>
+                          <div className="pills" style={{ marginTop: 10 }}>
+                            {r.bullets.map((b: string) => (
+                              <Pill key={b}>{b.replace(/\.$/, "")}</Pill>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ))}
+                </div>
+
+                <div className="showcaseGrid" style={{ marginTop: 14 }}>
+                  <div className="showcaseB">
+                    <ImpactChart />
+                  </div>
+                  <div className="showcaseC">
+                    <div className="tWrap">
+                      <div className="tHint">Key outcomes</div>
+                      <div className="statsRow" style={{ marginTop: 10 }}>
+                        <Stat k="Support efficiency" v="+35%" />
+                        <Stat k="Incorrect executions" v="-40%" />
+                        <Stat k="Models monitored" v="5" />
+                        <Stat k="Agent instances" v="10+" />
+                        <Stat k="Multi-agent workflows" v="8" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </FlowSection>
+
+              <FlowSection
+                title="System Overview"
+                subtitle="An agentic CRM automation stack, with routing, tools, guardrails, evaluation, and telemetry."
+              >
+                <div className="showcaseGrid">
+                  <div className="showcaseA">
+                    <AgenticWorkflow />
+                  </div>
+                  <div className="showcaseC">
+                    <TransformerMini />
+                  </div>
                 </div>
               </FlowSection>
             </div>
@@ -270,19 +249,30 @@ export default function App() {
 
         <Section id="skills" title="Skills">
           <div className="container" style={{ marginTop: 14 }}>
-            <div className="cols">
-              {Object.entries(profile.skills).map(([k, list]) => (
-                <div className="item col" key={k}>
-                  <div className="kv">
-                    <div className="k">{k}</div>
-                  </div>
+            <div className="showcaseGrid">
+              <div className="showcaseB">
+                <SkillsBarChart />
+              </div>
+              <div className="showcaseC">
+                <div className="tWrap">
+                  <div className="tHint">Core skill clusters</div>
                   <div className="pills" style={{ marginTop: 10 }}>
-                    {list.map((s) => (
+                    {[...new Set(Object.values(profile.skills).flat())].slice(0, 18).map((s) => (
                       <Pill key={s}>{s}</Pill>
                     ))}
                   </div>
                 </div>
-              ))}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="architecture" title="Architecture">
+          <div className="container" style={{ marginTop: 14 }}>
+            <div className="showcaseGrid">
+              <div className="showcaseA">
+                <TransformerFlow />
+              </div>
             </div>
           </div>
         </Section>

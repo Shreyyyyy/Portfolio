@@ -45,7 +45,9 @@ export default function AgenticWorkflow() {
         nodesDraggable={false}
         nodesConnectable={false}
         zoomOnScroll={false}
-        panOnScroll
+        panOnScroll={false}
+        zoomOnPinch={false}
+        panOnDrag={false}
         proOptions={{ hideAttribution: true }}
         defaultEdgeOptions={{ style: { stroke: "rgba(155,176,208,.55)", strokeWidth: 1.5 } }}
       >
