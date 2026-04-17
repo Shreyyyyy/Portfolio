@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import ReactFlow, { Background, Controls, type Edge, type Node } from "reactflow";
+import ReactFlow, { Background, type Edge, type Node } from "reactflow";
 import "reactflow/dist/style.css";
 
 export default function TransformerFlow() {
@@ -116,7 +116,6 @@ export default function TransformerFlow() {
         defaultEdgeOptions={{ style: { stroke: "rgba(215,199,255,.55)", strokeWidth: 1.5 } }}
       >
         <Background color="rgba(120,160,255,.18)" gap={24} />
-        <Controls />
       </ReactFlow>
     </div>
   );
