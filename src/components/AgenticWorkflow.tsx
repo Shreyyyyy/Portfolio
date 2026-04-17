@@ -5,13 +5,78 @@ import "reactflow/dist/style.css";
 export default function AgenticWorkflow() {
   const { nodes, edges } = useMemo(() => {
     const n: Node[] = [
-      { id: "in", position: { x: 0, y: 60 }, data: { label: "User / CRM Event" }, type: "input" },
-      { id: "router", position: { x: 220, y: 60 }, data: { label: "LLM Router\n(intent + tools)" } },
-      { id: "tools", position: { x: 470, y: 10 }, data: { label: "Tools\n(Email, CRM, KB)" } },
-      { id: "guard", position: { x: 470, y: 120 }, data: { label: "Guardrails\n(schema + safety)" } },
-      { id: "eval", position: { x: 710, y: 10 }, data: { label: "Eval\n(DeepEval)" } },
-      { id: "tele", position: { x: 710, y: 120 }, data: { label: "Telemetry\n(logs + traces)" } },
-      { id: "out", position: { x: 940, y: 60 }, data: { label: "Automated Reply\n+ Actions" }, type: "output" },
+      {
+        id: "in",
+        position: { x: 0, y: 60 },
+        data: { label: "User / CRM Event" },
+        type: "input",
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "router",
+        position: { x: 220, y: 60 },
+        data: { label: "LLM Router\n(intent + tools)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "tools",
+        position: { x: 470, y: 10 },
+        data: { label: "Tools\n(Email, CRM, KB)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "guard",
+        position: { x: 470, y: 120 },
+        data: { label: "Guardrails\n(schema + safety)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "eval",
+        position: { x: 710, y: 10 },
+        data: { label: "Eval\n(DeepEval)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "tele",
+        position: { x: 710, y: 120 },
+        data: { label: "Telemetry\n(logs + traces)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "out",
+        position: { x: 940, y: 60 },
+        data: { label: "Automated Reply\n+ Actions" },
+        type: "output",
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
     ];
 
     const e: Edge[] = [
@@ -49,7 +114,7 @@ export default function AgenticWorkflow() {
         zoomOnPinch={false}
         panOnDrag={false}
         proOptions={{ hideAttribution: true }}
-        defaultEdgeOptions={{ style: { stroke: "rgba(155,176,208,.55)", strokeWidth: 1.5 } }}
+        defaultEdgeOptions={{ style: { stroke: "rgba(215,199,255,.55)", strokeWidth: 1.5 } }}
       >
         <Background color="rgba(120,160,255,.18)" gap={24} />
         <Controls />

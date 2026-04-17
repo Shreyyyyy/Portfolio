@@ -5,13 +5,78 @@ import "reactflow/dist/style.css";
 export default function TransformerFlow() {
   const { nodes, edges } = useMemo(() => {
     const n: Node[] = [
-      { id: "tok", position: { x: 0, y: 70 }, data: { label: "Tokens" }, type: "input" },
-      { id: "emb", position: { x: 170, y: 70 }, data: { label: "Embedding\n+ Positional" } },
-      { id: "att", position: { x: 380, y: 20 }, data: { label: "Multi-Head\nAttention" } },
-      { id: "res1", position: { x: 380, y: 130 }, data: { label: "Residual\n+ LayerNorm" } },
-      { id: "ffn", position: { x: 610, y: 70 }, data: { label: "FFN (MLP)" } },
-      { id: "res2", position: { x: 820, y: 70 }, data: { label: "Residual\n+ LayerNorm" } },
-      { id: "out", position: { x: 1030, y: 70 }, data: { label: "Next Token" }, type: "output" },
+      {
+        id: "tok",
+        position: { x: 0, y: 70 },
+        data: { label: "Tokens" },
+        type: "input",
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "emb",
+        position: { x: 170, y: 70 },
+        data: { label: "Embedding\n+ Positional" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "att",
+        position: { x: 380, y: 20 },
+        data: { label: "Multi-Head\nAttention" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "res1",
+        position: { x: 380, y: 130 },
+        data: { label: "Residual\n+ LayerNorm" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "ffn",
+        position: { x: 610, y: 70 },
+        data: { label: "FFN (MLP)" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "res2",
+        position: { x: 820, y: 70 },
+        data: { label: "Residual\n+ LayerNorm" },
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
+      {
+        id: "out",
+        position: { x: 1030, y: 70 },
+        data: { label: "Next Token" },
+        type: "output",
+        style: {
+          background: "rgba(215,199,255,.16)",
+          border: "1px solid rgba(215,199,255,.45)",
+          color: "#d7c7ff",
+        },
+      },
     ];
 
     const e: Edge[] = [
@@ -48,7 +113,7 @@ export default function TransformerFlow() {
         zoomOnPinch={false}
         panOnDrag={false}
         proOptions={{ hideAttribution: true }}
-        defaultEdgeOptions={{ style: { stroke: "rgba(155,176,208,.55)", strokeWidth: 1.5 } }}
+        defaultEdgeOptions={{ style: { stroke: "rgba(215,199,255,.55)", strokeWidth: 1.5 } }}
       >
         <Background color="rgba(120,160,255,.18)" gap={24} />
         <Controls />
