@@ -5,6 +5,7 @@
   --panel2:rgba(12,18,34,.35);
   --text:#e7f1ff;
   --muted:#9bb0d0;
+  --lilac:#d7c7ff;
   --line:rgba(120,160,255,.18);
   --cyan:#23f5ff;
   --mag:#c935ff;
@@ -27,6 +28,9 @@ body{
     linear-gradient(180deg, var(--bg0), var(--bg1));
   overflow-x:hidden;
 }
+
+/* Lilac accent (instead of white) for key headings */
+.dashTitle, .sectionTitle h2{color:var(--lilac)}
 
 /* Prevent overflow issues on small screens */
 img, svg, canvas{max-width:100%;height:auto}

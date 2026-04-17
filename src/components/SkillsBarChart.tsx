@@ -27,7 +27,7 @@ export default function SkillsBarChart() {
           <YAxis tick={{ fill: "rgba(155,176,208,.75)", fontSize: 12 }} axisLine={false} tickLine={false} width={32} domain={[0, 100]} />
           <Tooltip
             contentStyle={{ background: "rgba(5,6,10,.88)", border: "1px solid rgba(120,160,255,.22)", borderRadius: 12 }}
-            labelStyle={{ color: "#e7f1ff" }}
+            labelStyle={{ display: "none" }}
           />
           <Bar dataKey="score" fill="url(#bar)" radius={[10, 10, 10, 10]} />
         </BarChart>

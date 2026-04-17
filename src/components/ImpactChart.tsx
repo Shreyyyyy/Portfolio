@@ -28,7 +28,7 @@ export default function ImpactChart() {
           <YAxis tick={{ fill: "rgba(155,176,208,.75)", fontSize: 12 }} axisLine={false} tickLine={false} width={36} />
           <Tooltip
             contentStyle={{ background: "rgba(5,6,10,.88)", border: "1px solid rgba(120,160,255,.22)", borderRadius: 12 }}
-            labelStyle={{ color: "#e7f1ff" }}
+            labelStyle={{ display: "none" }}
           />
           <Area type="monotone" dataKey="efficiency" stroke="#23f5ff" fill="url(#eff)" strokeWidth={2} />
           <Area type="monotone" dataKey="safety" stroke="#c935ff" fill="url(#saf)" strokeWidth={2} />
