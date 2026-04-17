@@ -1,11 +1,17 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 function Block({ title, info }: { title: string; info: string }) {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="tBlock" title={info}>
+    <button
+      type="button"
+      className={`tBlock ${open ? "open" : ""}`}
+      title={info}
+      onClick={() => setOpen((v) => !v)}
+    >
       <div className="tTitle">{title}</div>
       <div className="tInfo">{info}</div>
-    </div>
+    </button>
   );
 }
 
@@ -47,7 +53,7 @@ export default function TransformerMini() {
           <Block key={l.t} title={l.t} info={l.i} />
         ))}
       </div>
-      <div className="tHint">Transformer (simplified) • hover blocks</div>
+      <div className="tHint">Transformer (simplified) • tap/click blocks</div>
     </div>
   );
 }
